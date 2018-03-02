@@ -1,0 +1,8 @@
+sudo: required
+
+services:
+  - docker
+
+script:
+  - docker build -t datencia/ionic-android .
+  - docker run datencia/ionic-android /bin/sh -c "ionic start myApp blank --no-link --no-git --cordova && cd myApp && ionic cordova platform add android --no-resources && ionic cordova build android"
