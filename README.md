@@ -23,6 +23,7 @@
   - APIs: android-23, android-24, android-25, android-26
   - Build-Tools: 27.0.3
 - Google Chrome Headless for unit tests
+- xvfb for e2e tests (Cypress & TestCafé)
 
 ## Usage
 
