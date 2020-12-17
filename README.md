@@ -2,7 +2,7 @@
 
 # Docker image for Ionic projects to get CI/CD
 
-> based on [datencia/ionic](https://hub.docker.com/r/datencia/ionic/)
+> based on [node:10.23.0-slim](https://hub.docker.com/_/node)
 
 ## Inspired by
 
@@ -12,18 +12,13 @@
 
 ## Features
 
-- Node 6
-- Npm 5.6.0
-- Yarn 1.3.2
-- Ionic 3.19.1
-- Cordova 8.0.0
+- Node 10.23.0
+- Ionic 6.12.3
+- Cordova 10.0.0
 - Java JDK 8
-- Gradle 4.5.1
 - Android SDK and build tools
-  - APIs: android-23, android-24, android-25, android-26
-  - Build-Tools: 27.0.3
-- Google Chrome Headless for unit tests
-- xvfb for e2e tests (Cypress & TestCafé)
+  - APIs: android-27
+  - Build-Tools: 30.0.3
 
 ## Usage
 
