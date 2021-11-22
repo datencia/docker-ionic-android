@@ -1,13 +1,15 @@
-FROM node:10.23.0-slim
+FROM node:12.22.7-slim
 
 LABEL maintainer="David Atencia <david.atencia@gmail.com>"
 
-ENV IONIC_VERSION=6.12.3 \
+ENV IONIC_VERSION=6.18.0 \
     CORDOVA_VERSION=10.0.0 \
     ANDROID_HOME=/opt/android-sdk-linux \
+    ANDROID_SDK_ROOT=/opt/android-sdk-linux \
     ANDROID_TOOLS_VERSION=r25.2.5 \
     ANDROID_API_LEVEL=android-27 \
-    ANDROID_BUILD_TOOLS_VERSION=30.0.3
+    ANDROID_BUILD_TOOLS_VERSION=30.0.3 \
+    APKTOOL_VERSION=2.5.0
 
 RUN echo "Installing basics" && \
     mkdir -p /usr/share/man/man1 && \
@@ -38,7 +40,12 @@ RUN echo "Installing Android SDK" && \
     rm -f android-tools-sdk.zip && \
     yes y | ${ANDROID_HOME}/tools/bin/sdkmanager "build-tools;${ANDROID_BUILD_TOOLS_VERSION}" "platform-tools" "platforms;${ANDROID_API_LEVEL}"
 
-ENV PATH $PATH:${ANDROID_HOME}/tools:${ANDROID_HOME}/tools/bin:${ANDROID_HOME}/platform-tools
+ENV PATH $PATH:${ANDROID_HOME}/tools:${ANDROID_HOME}/tools/bin:${ANDROID_HOME}/platform-tools:${ANDROID_HOME}/build-tools/${ANDROID_BUILD_TOOLS_VERSION}
+
+RUN echo "Installing Apktool" && \
+    wget -O /usr/local/bin/apktool -nv https://raw.githubusercontent.com/iBotPeaches/Apktool/master/scripts/linux/apktool && \
+    wget -O /usr/local/bin/apktool.jar -nv https://bitbucket.org/iBotPeaches/apktool/downloads/apktool_${APKTOOL_VERSION}.jar && \
+    chmod +x /usr/local/bin/apktool.jar /usr/local/bin/apktool
 
 RUN echo "Installing Ionic & Cordova" && \
     npm i -g @ionic/cli@${IONIC_VERSION} cordova@${CORDOVA_VERSION} cordova-res --unsafe-perm && \

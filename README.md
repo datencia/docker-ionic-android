@@ -2,7 +2,7 @@
 
 # Docker image for Ionic projects to get CI/CD
 
-> based on [node:10.23.0-slim](https://hub.docker.com/_/node)
+> based on [node:12.22.7-slim](https://hub.docker.com/_/node)
 
 ## Inspired by
 
@@ -12,13 +12,14 @@
 
 ## Features
 
-- Node 10.23.0
-- Ionic 6.12.3
+- Node 12.22.7
+- Ionic 6.18.0
 - Cordova 10.0.0
 - Java JDK 8
 - Android SDK and build tools
   - APIs: android-27
   - Build-Tools: 30.0.3
+- APKTool 2.5.0
 
 ## Usage
 
